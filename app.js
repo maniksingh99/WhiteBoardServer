@@ -6,9 +6,11 @@ const http = require('http').createServer(app);
 //socket enabled server
 const io = require('socket.io')(http);
 
-app.get("/", function (req, res) {
-    res.end("<h1>Welcome to home Page</h1>")
-})
+app.use(express.static("client"));
+
+// app.get("/", function (req, res) {
+//     res.end("<h1>Welcome to home Page</h1>")
+// })
 
 io.on("connection",function(socket){
     console.log("New client connected");
